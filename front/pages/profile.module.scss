@@ -1,0 +1,52 @@
+#ProfileImg {
+  border-radius: 50%;
+  margin: 10em 22em 0 22em;
+}
+
+#FlexRow {
+  display: flex;
+  flex-direction: row;
+}
+#FlexCol {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  padding: 4em 19em;
+
+  .userBackground {
+    height: 20em;
+    background-image: url(/assets/image2.jpg);
+  }
+
+  .profileImgWrap {
+    margin: 10em 22.5em 0 22.5em;
+  }
+
+  & > h1 {
+    padding-top: 1em;
+    text-align: center;
+    color: black;
+    margin-bottom: 1;
+  }
+  button {
+    margin: 0 auto;
+    width: 10em;
+    font-size: 1rem;
+    color: blue;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 2em;
+  }
+  .profileNav {
+    border-top: 2px solid;
+    justify-content: space-evenly;
+    button {
+      color: black;
+      font-size: 1.3rem;
+      color: black;
+      background-color: transparent;
+      border: none;
+    }
+  }
+}

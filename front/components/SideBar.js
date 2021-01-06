@@ -11,6 +11,10 @@ const SideBar = () => {
   const [openUpload, setOpenUpload] = useState(false);
   const router = useRouter();
 
+  const changePage = e => {
+    console.log(e.target.name);
+  };
+
   return (
     <>
       <UploadForm open={openUpload} closeForm={() => setOpenUpload(false)} />
@@ -27,26 +31,49 @@ const SideBar = () => {
           }
         >
           <Link href='/'>
-            <button>
+            <button name='home' onClick={changePage}>
               <AiFillHome />
               <span>Home</span>
             </button>
           </Link>
         </div>
-        <div className={styles.sideOption}>
-          <button>
+
+        <div
+          className={
+            router.pathname === '/hot'
+              ? `${styles.sideOption} ${styles.selected}`
+              : styles.sideOption
+          }
+        >
+          <button name='hot' onClick={changePage}>
             <GiFlamer />
             <span>Hot</span>
           </button>
         </div>
-        <div className={styles.sideOption}>
-          <button>
-            <RiHeadphoneFill />
-            <span>Listen</span>
-          </button>
+
+        <div
+          className={
+            router.pathname === '/listener'
+              ? `${styles.sideOption} ${styles.selected}`
+              : styles.sideOption
+          }
+        >
+          <Link href='/listener'>
+            <button name='listener' onClick={changePage}>
+              <RiHeadphoneFill />
+              <span>Listen</span>
+            </button>
+          </Link>
         </div>
-        <div className={styles.sideOption}>
-          <button>
+
+        <div
+          className={
+            router.pathname === '/saved'
+              ? `${styles.sideOption} ${styles.selected}`
+              : styles.sideOption
+          }
+        >
+          <button name='saved' onClick={changePage}>
             <AiFillBook />
             <span>Saved</span>
           </button>

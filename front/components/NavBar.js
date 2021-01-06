@@ -39,9 +39,32 @@ const AuthenticatedButton = () => {
       </button>
       <div id={styles.ProfileDropdown} className={drop ? '' : styles.hidden}>
         <div>
+          <Link href='/profile'>
+            <button>Profile</button>
+          </Link>
           <button onClick={handleSignOut}>Sign out</button>
         </div>
       </div>
+    </div>
+  );
+};
+
+const NotificationWindow = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className={styles.relativeContainer}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        className={open ? `${styles.navButtons} ${styles.open}` : styles.navButtons}
+      >
+        <IoMdNotifications />
+      </button>
+      {open ? (
+        <div className={styles.dropdown}>
+          <div>nothing here ...</div>
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -80,9 +103,7 @@ const NavBar = () => {
         ) : (
           <AuthenticatedButton />
         )}
-        <button className={styles.navButtons}>
-          <IoMdNotifications />
-        </button>
+        <NotificationWindow />
         <button className={styles.navButtons}>
           <AiFillSetting />
         </button>

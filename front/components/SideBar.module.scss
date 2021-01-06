@@ -28,6 +28,7 @@
       svg {
         font-size: 1.5rem;
         flex: 0 0 35%;
+        pointer-events: none;
       }
 
       span {
@@ -36,6 +37,7 @@
         font-weight: 600;
         flex: 1 0 auto;
         text-align: left;
+        pointer-events: none;
       }
 
       &:hover {

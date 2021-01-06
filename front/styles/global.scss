@@ -19,12 +19,12 @@ input[type='submit'] {
 }
 
 #__next {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #App {
   $side_bar_width: 20em;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: $base-1;
   position: relative;
 

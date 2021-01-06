@@ -104,7 +104,7 @@
     transform: translate(-1%, 100%);
 
     div {
-      background-color: rgba($color: darken(white, 10), $alpha: 0.6);
+      background-color: rgba($color: darken(white, 10), $alpha: 1);
       width: 10em;
       border-radius: 0.15em;
       color: white;
@@ -118,7 +118,6 @@
         border: none;
         transition: 0.2s;
         font-size: 1.05rem;
-        font-weight: 700;
 
         &:hover {
           background-color: darken($color: white, $amount: 10);
@@ -130,4 +129,35 @@
 
 .hidden {
   display: none;
+}
+
+.relativeContainer {
+  position: relative;
+
+  .open {
+    background-color: darken($color: white, $amount: 10) !important;
+    color: $base-2;
+    box-shadow: 1px 1px 2px;
+    border-radius: 0px !important;
+  }
+
+  .dropdown {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    transform: translate(25%, 100%);
+
+    div {
+      background-color: rgba($color: darken(white, 10), $alpha: 1);
+      width: 15em;
+      height: 13em;
+      border-radius: 0.15em;
+      color: lighten($color: $text, $amount: 5);
+      font-size: 0.9rem;
+      text-align: center;
+      box-shadow: 0px 1px 3px $base-2 !important;
+      padding: 0.15em 0em;
+      padding-top: 4em;
+    }
+  }
 }
