@@ -64,6 +64,16 @@ export const signin = (user: User, callback: Handler) => {
   });
 };
 
+export const getAccountDetail = (
+  email: string,
+  callback: (err: any | Message, data?: Message) => void
+) => {
+  db.get('SELECT name FROM accounts WHERE email=?', [email], (err, result) => {
+    if (err) return callback(new Message(500, { error: 'Internal error', detail: err }));
+    else return callback(null, new Message(200, { user: result }));
+  });
+};
+
 // ---------------------------------------------------------UTILS---------------------------------------------------------
 const encryptPassword = (pass: string) =>
   hashSync(pass, genSaltSync(parseInt(BCRYPT_SALT || '10')));

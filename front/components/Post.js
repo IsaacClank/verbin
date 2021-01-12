@@ -1,4 +1,5 @@
 import styles from './Post.module.scss';
+import { SERVER } from '../_config';
 import ReactAudioPlayer from 'react-audio-player';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaCommentAlt } from 'react-icons/fa';
@@ -63,7 +64,8 @@ const CommentSection = () => {
   );
 };
 
-const Post = () => {
+const Post = ({ detail, id }) => {
+  const [username, setUsername] = useState(undefined);
   const [openComments, setOpenComments] = useState(false);
   const [like, setLike] = useState(false);
   const [openReport, setOpenReport] = useState(false);
@@ -79,31 +81,31 @@ const Post = () => {
     }
   }, [openComments, commentRef]);
 
+  useEffect(() => {
+    if (!username)
+      fetch(`${SERVER}/auth/info/${detail.email}`)
+        .then(r => r.json())
+        .then(r => setUsername(r.user.name));
+  }, [username]);
+
   return (
     <>
-      <div className={`${styles.post} ${styles.flexContainer}`}>
+      <div className={`${styles.post} ${styles.flexContainer}`} id={id}>
         <div className={styles.row}>
           <div className={`${styles.profileImg} ${styles.col}`}>
             <div />
           </div>
-          <div className={`${styles.username} ${styles.col}`}>Isaac</div>
+          <div className={`${styles.username} ${styles.col}`}>{username}</div>
         </div>
         <div className={styles.row}>
           <div className={`${styles.postBody} ${styles.col}`}>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum
-            </p>
+            <p>{detail.body}</p>
           </div>
         </div>
         <div className={styles.row}>
           <div className={`${styles.music} ${styles.col}`}>
             <ReactAudioPlayer
-              src='http://localhost:3001/audio/1'
+              src={`http://localhost:3001/audio/1`}
               controls
               crossOrigin='anonymous'
             />
