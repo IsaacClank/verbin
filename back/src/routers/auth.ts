@@ -20,7 +20,18 @@ const router = Router();
 router.get('/', (req, res, next) => {
   let session = req.session as PlainObject;
   res.locals.msg = new Message(200, { authenticated: session.user ? true : false });
+  if (session.user) {
+    (res.locals.msg as Message).addData(session.user);
+  }
   return next();
+});
+
+router.get('/info/:email', (req, res, next) => {
+  AuthService.getAccountDetail(req.params.email, (err, r) => {
+    if (err) res.locals.err = err;
+    else res.locals.msg = r;
+    return next();
+  });
 });
 
 router.post('/signup', parseUserAuthentication, (req, res, next) => {

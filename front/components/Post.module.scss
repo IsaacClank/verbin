@@ -1,4 +1,4 @@
-@import "../styles//variables";
+@import '../styles//variables';
 
 .hidden {
   display: none !important;
@@ -11,7 +11,7 @@
   .row {
     flex-wrap: wrap;
     display: flex;
-    flex: 0 0 3em;
+    flex: 0 0 2.5em;
     padding: 0.25em 0.5em;
   }
 
@@ -59,11 +59,11 @@
 
   .postBody {
     color: darken($color: $text, $amount: 15);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .interactButtons {
-    margin-top: 2em;
+    margin-top: 0.5em;
     justify-content: flex-end;
 
     button {
@@ -178,7 +178,7 @@
     cursor: pointer;
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     background-color: transparent;
     color: white;
     border: none;
